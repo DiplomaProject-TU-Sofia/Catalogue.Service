@@ -1,0 +1,97 @@
+﻿using Administration.Service.Data.Entities;
+using Administration.Service.Data.Entities.Enumerations;
+using Administration.Service.Models;
+using Administration.Service.Models.Saloon;
+using Administration.Service.Models.Worker;
+using Microsoft.AspNetCore.OData.Query;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+
+namespace Administration.Service.Data.Repositories
+{
+    public class SaloonRepository
+	{
+		private readonly AdministrationServiceDbContext _dbContext;
+		public SaloonRepository(AdministrationServiceDbContext dbContext)
+		{
+			_dbContext = dbContext;
+		}
+
+		public async Task CreateSaloonAsync(CreateSaloon createSaloon)
+		{
+			var saloon = new Saloon
+			{
+				Id = Guid.NewGuid(),
+				Name = createSaloon.Name,
+				Location = createSaloon.Location,
+				WorkHours = createSaloon.WorkHours,
+			};
+			_dbContext.Saloons.Add(saloon);
+			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task UpdateSaloonAsync(UpdateSaloon updateSaloon)
+		{
+			var existingSaloon = await _dbContext.Saloons.FirstOrDefaultAsync(s => s.Id == updateSaloon.SaloonId);
+
+			if (existingSaloon == null)
+			{
+				throw new Exception($"Couldn't find saloon with id: {updateSaloon.SaloonId}");
+			}
+
+			existingSaloon.Id = updateSaloon.SaloonId;
+			existingSaloon.Name = updateSaloon.Name;
+			existingSaloon.Location = updateSaloon.Location;
+			existingSaloon.WorkHours = updateSaloon.WorkHours;
+
+			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task DeleteSaloonAsync(Guid saloonId)
+		{
+			var saloonToDelete = new Saloon() { Id = saloonId };
+
+			// Attach the entity to the context and mark it as deleted - this would be less resource consuming than reading it from the DB
+			_dbContext.Saloons.Attach(saloonToDelete);
+			_dbContext.Saloons.Remove(saloonToDelete);
+
+			await _dbContext.SaveChangesAsync();
+		}
+
+		public async Task<IEnumerable<SaloonDto>> GetSaloonsAsync(ODataQueryOptions<SaloonDto> queryOptions)
+		{
+			var query = _dbContext.Saloons
+				.Select(s => new SaloonDto { Id = s.Id, Name =  s.Name , Location = s.Location})
+				.AsQueryable();
+
+			var saloons = await queryOptions.ApplyTo(query).Cast<SaloonDto>().ToListAsync();
+
+			return saloons;
+		}
+
+		public async Task<SaloonDetailsDto> GetSaloonDetails(Guid saloonId)
+		{
+			var saloon = await _dbContext.Saloons.FirstOrDefaultAsync(s => s.Id == saloonId);
+
+			if (saloon == null)
+				return null;
+
+			var saloonDto = new SaloonDetailsDto
+			{
+				Id = saloon.Id,
+				Location = saloon.Location,
+				WorkHours = saloon.WorkHours,
+				Name = saloon.Name,
+				Workers = saloon.SaloonWorkers.Select(sw => new WorkerDto
+				{
+					Id = sw.UserId,
+					FirstName = sw.Worker.FirstName,
+					LastName = sw.Worker.LastName,
+					WorkingDays = sw.WorkingDays.ToList()
+				}).ToList()
+			};
+
+			return saloonDto;
+		}
+	}
+}
