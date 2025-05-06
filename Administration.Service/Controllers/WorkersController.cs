@@ -115,7 +115,7 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerService"></param>
 		/// <returns></returns>
-		[HttpPost("saloom-remove")]
+		[HttpPost("saloon-remove")]
 		public async Task<IActionResult> RemoveWorkerFromService(RemoveSaloonWorker workerService)
 		{
 			if (workerService.SaloonId == default || workerService.WorkerId == default)
