@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.OData.Query;
 namespace Administration.Service.API.Controllers
 {
 	[AllowAnonymous]
-	[Route("api/workers")]
+	[Route("api")]
 	[ApiController]
 	public class WorkersController : BaseController
 	{
@@ -23,7 +23,7 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="queryOptions"></param>
 		/// <returns></returns>
-		[HttpGet]
+		[HttpGet("workers")]
 		public async Task<IActionResult> GetWorkers(ODataQueryOptions<WorkerDto> queryOptions)
 		{
 			//Validate oDataQuery options
@@ -44,7 +44,7 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerId"></param>
 		/// <returns></returns>
-		[HttpGet("{serviceId:guid}")]
+		[HttpGet("workers/{serviceId:guid}")]
 		public async Task<IActionResult> GetWorkerDetails(Guid workerId)
 		{
 			//Validate workerId
@@ -65,8 +65,8 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerService"></param>
 		/// <returns></returns>
-		[HttpPost("service")]
-		public async Task<IActionResult> AssignWorkerToService(CreateWorkerService workerService)
+		[HttpPost("worker-service")]
+		public async Task<IActionResult> CreateWorkerService(CreateWorkerServiceModel workerService)
 		{
 			if (workerService.ServiceId == default || workerService.UserId == default)
 				return BadRequest();
@@ -82,8 +82,8 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="saloonWorker"></param>
 		/// <returns></returns>
-		[HttpPost("saloon")]
-		public async Task<IActionResult> AssignWorkerToSaloon([FromBody] CreateSaloonWorker saloonWorker)
+		[HttpPost("worker-saloon")]
+		public async Task<IActionResult> CreateSaloonWorker([FromBody] CreateSaloonWorkerModel saloonWorker)
 		{
 			if (saloonWorker.SaloonId == default || saloonWorker.WorkerId == default)
 				return BadRequest();
@@ -99,8 +99,8 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerService"></param>
 		/// <returns></returns>
-		[HttpPost("service-remove")]
-		public async Task<IActionResult> RemoveWorkerFromService(RemoveWorkerService workerService)
+		[HttpDelete("workers-service")]
+		public async Task<IActionResult> RemoveWorkerService(RemoveWorkerServiceModel workerService)
 		{
 			if (workerService.ServiceId == default || workerService.WorkerId == default)
 				return BadRequest();
@@ -115,13 +115,13 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerService"></param>
 		/// <returns></returns>
-		[HttpPost("saloon-remove")]
-		public async Task<IActionResult> RemoveWorkerFromService(RemoveSaloonWorker workerService)
+		[HttpDelete("workers-saloon")]
+		public async Task<IActionResult> RemoveSaloonWorker(RemoveSaloonWorkerModel saloonWorker)
 		{
-			if (workerService.SaloonId == default || workerService.WorkerId == default)
+			if (saloonWorker.SaloonId == default || saloonWorker.WorkerId == default)
 				return BadRequest();
 
-			await _workersRepository.RemoveSaloonWorkerAsync(workerService.SaloonId, workerService.WorkerId);
+			await _workersRepository.RemoveSaloonWorkerAsync(saloonWorker.SaloonId, saloonWorker.WorkerId);
 
 			return NoContent();
 		}

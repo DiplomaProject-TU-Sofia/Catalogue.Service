@@ -1,6 +1,6 @@
 ﻿namespace Administration.Service.Models.Worker
 {
-    public class CreateWorkerService
+    public class CreateWorkerServiceModel
     {
         public Guid UserId { get; set; }
 

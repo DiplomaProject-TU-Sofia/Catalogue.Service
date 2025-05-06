@@ -1,6 +1,6 @@
 ﻿namespace Administration.Service.Models.Worker
 {
-    public class RemoveWorkerService
+    public class RemoveWorkerServiceModel
     {
         public Guid WorkerId { get; set; }
 

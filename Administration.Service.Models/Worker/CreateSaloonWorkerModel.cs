@@ -1,6 +1,6 @@
 ﻿namespace Administration.Service.Models.Worker
 {
-    public class CreateSaloonWorker
+    public class CreateSaloonWorkerModel
     {
         public Guid WorkerId { get; set; }
         public Guid SaloonId { get; set; }
