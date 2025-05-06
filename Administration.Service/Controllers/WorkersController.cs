@@ -1,5 +1,4 @@
-﻿using Administration.Service.Data.Entities;
-using Administration.Service.Data.Repositories;
+﻿using Administration.Service.Data.Repositories;
 using Administration.Service.Models.Worker;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -67,7 +66,7 @@ namespace Administration.Service.API.Controllers
 		/// <param name="workerService"></param>
 		/// <returns></returns>
 		[HttpPost("service")]
-		public async Task<IActionResult> AssignWorkerToSaloon(CreateWorkerService workerService)
+		public async Task<IActionResult> AssignWorkerToService(CreateWorkerService workerService)
 		{
 			if (workerService.ServiceId == default || workerService.UserId == default)
 				return BadRequest();

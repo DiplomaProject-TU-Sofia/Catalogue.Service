@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.OData.Query;
 namespace Administration.Service.API.Controllers
 {
 	[AllowAnonymous]
-	[Route("api/service")]
+	[Route("api/services")]
 	[ApiController]
 	public class ServiceController : BaseController
 	{

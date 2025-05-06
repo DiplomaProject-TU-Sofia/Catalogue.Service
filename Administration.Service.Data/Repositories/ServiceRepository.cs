@@ -64,7 +64,7 @@ namespace Administration.Service.Data.Repositories
 
 		public async Task<ServiceDetailsDto> GetServiceDetails(Guid serviceId)
 		{
-			var service = await _dbContext.Services.FirstOrDefaultAsync(s => s.Id == serviceId);
+			var service = await _dbContext.Services.Include(s => s.WorkerServices).ThenInclude(sw => sw.Worker).FirstOrDefaultAsync(s => s.Id == serviceId);
 
 			if (service == null)
 				return null;

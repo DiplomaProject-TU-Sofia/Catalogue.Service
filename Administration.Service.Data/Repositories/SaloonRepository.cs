@@ -1,15 +1,12 @@
 ﻿using Administration.Service.Data.Entities;
-using Administration.Service.Data.Entities.Enumerations;
-using Administration.Service.Models;
 using Administration.Service.Models.Saloon;
 using Administration.Service.Models.Worker;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
-using System.Text.Json;
 
 namespace Administration.Service.Data.Repositories
 {
-    public class SaloonRepository
+	public class SaloonRepository
 	{
 		private readonly AdministrationServiceDbContext _dbContext;
 		public SaloonRepository(AdministrationServiceDbContext dbContext)
