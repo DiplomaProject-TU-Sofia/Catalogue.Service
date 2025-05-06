@@ -86,5 +86,31 @@ namespace Administration.Service.Data.Repositories
 				})
 			};
 		}
+
+		public async Task<bool> RemoveWorkerServiceAsync(Guid serviceId, Guid workerId)
+		{
+			var workerServiceToDelete = new WorkerService() { ServiceId = serviceId, UserId = workerId };
+
+			// Attach the entity to the context and mark it as deleted - this would be less resource consuming than reading it from the DB
+			_dbContext.WorkerServices.Attach(workerServiceToDelete);
+			_dbContext.WorkerServices.Remove(workerServiceToDelete);
+
+			await _dbContext.SaveChangesAsync();
+
+			return true;
+		}
+
+		public async Task<bool> RemoveSaloonWorkerAsync(Guid saloonId, Guid workerId)
+		{
+			var saloonWorkerToDelete = new SaloonWorker() { SaloonId = saloonId, UserId = workerId };
+
+			// Attach the entity to the context and mark it as deleted - this would be less resource consuming than reading it from the DB
+			_dbContext.SaloonWorkers.Attach(saloonWorkerToDelete);
+			_dbContext.SaloonWorkers.Remove(saloonWorkerToDelete);
+
+			await _dbContext.SaveChangesAsync();
+
+			return true;
+		}
 	}
 }

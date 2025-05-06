@@ -93,6 +93,37 @@ namespace Administration.Service.API.Controllers
 
 			return NoContent();
 		}
+		
+		/// <summary>
+		/// Remove service from worker
+		/// </summary>
+		/// <param name="workerService"></param>
+		/// <returns></returns>
+		[HttpPost("service-remove")]
+		public async Task<IActionResult> RemoveWorkerFromService(RemoveWorkerService workerService)
+		{
+			if (workerService.ServiceId == default || workerService.WorkerId == default)
+				return BadRequest();
 
+			await _workersRepository.RemoveWorkerServiceAsync(workerService.ServiceId, workerService.WorkerId);
+
+			return NoContent();
+		}
+
+		/// <summary>
+		/// Remove worker from saloon
+		/// </summary>
+		/// <param name="workerService"></param>
+		/// <returns></returns>
+		[HttpPost("saloom-remove")]
+		public async Task<IActionResult> RemoveWorkerFromService(RemoveSaloonWorker workerService)
+		{
+			if (workerService.SaloonId == default || workerService.WorkerId == default)
+				return BadRequest();
+
+			await _workersRepository.RemoveSaloonWorkerAsync(workerService.SaloonId, workerService.WorkerId);
+
+			return NoContent();
+		}
 	}
 }
