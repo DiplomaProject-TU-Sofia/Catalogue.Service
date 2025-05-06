@@ -71,7 +71,7 @@ namespace Administration.Service.Data.Repositories
 
 		public async Task<SaloonDetailsDto> GetSaloonDetails(Guid saloonId)
 		{
-			var saloon = await _dbContext.Saloons.FirstOrDefaultAsync(s => s.Id == saloonId);
+			var saloon = await _dbContext.Saloons.Include(s => s.SaloonWorkers).FirstOrDefaultAsync(s => s.Id == saloonId);
 
 			if (saloon == null)
 				return null;
