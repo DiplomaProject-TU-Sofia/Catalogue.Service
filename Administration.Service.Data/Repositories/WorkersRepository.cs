@@ -62,7 +62,7 @@ namespace Administration.Service.Data.Repositories
 
 		public async Task<WorkerDetailsDto> GetWorkerDetails(Guid workerId)
 		{
-			var worker = _dbContext.Users.FirstOrDefault(u => u.Id == workerId && u.UserRoles.Any(ur => ur.Role.Name == "Worker"));
+			var worker = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == workerId && u.UserRoles.Any(ur => ur.Role.Name == "Worker"));
 
 			if (worker == null)
 				return null;
@@ -111,6 +111,16 @@ namespace Administration.Service.Data.Repositories
 			await _dbContext.SaveChangesAsync();
 
 			return true;
+		}
+
+		public async Task DeleteWorkerAsync(Guid workerId)
+		{
+			var worker = await _dbContext.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role).FirstOrDefaultAsync(u => u.Id == workerId && u.UserRoles.Any(ur => ur.Role.Name == "Worker"));
+			if(worker == null)
+				return;
+
+			_dbContext.Users.Remove(worker);
+			await _dbContext.SaveChangesAsync();
 		}
 	}
 }

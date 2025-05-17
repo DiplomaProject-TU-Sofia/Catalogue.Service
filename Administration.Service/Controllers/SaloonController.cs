@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.OData.Query;
 
 namespace Administration.Service.API.Controllers
 {
-    [AllowAnonymous]
+	[AllowAnonymous]
 	[Route("api/saloons")]
 	[ApiController]
 	public class SaloonController : BaseController
@@ -33,7 +33,7 @@ namespace Administration.Service.API.Controllers
 			//Get saloon details
 			var saloonDetails = await _saloonRepository.GetSaloonDetails(saloonId);
 
-			if(saloonDetails == null)
+			if (saloonDetails == null)
 				return NotFound();
 
 			return Ok(saloonDetails);
@@ -74,7 +74,7 @@ namespace Administration.Service.API.Controllers
 
 			await _saloonRepository.CreateSaloonAsync(createSaloon);
 
-			return Created();
+			return Ok();
 		}
 
 		/// <summary>
@@ -90,7 +90,23 @@ namespace Administration.Service.API.Controllers
 
 			await _saloonRepository.UpdateSaloonAsync(updateSaloon);
 
-			return NoContent();
+			return Ok();
+		}
+
+		/// <summary>
+		/// Deletes saloon
+		/// </summary>
+		/// <param name="saloonId"></param>
+		/// <returns></returns>
+		[HttpDelete("{saloonId}")]
+		public async Task<IActionResult> DeleteSaloon(Guid saloonId)
+		{
+			if (saloonId == default)
+				return BadRequest("saloonId shouldn't be null");
+
+			await _saloonRepository.DeleteSaloonAsync(saloonId);
+
+			return Ok();
 		}
 	}
 }

@@ -59,6 +59,11 @@ namespace Administration.Service.API.Controllers
 			return Ok(service);
 		}
 
+		/// <summary>
+		/// Creates service
+		/// </summary>
+		/// <param name="createService"></param>
+		/// <returns></returns>
 		[HttpPost()]
 		public async Task<IActionResult> CreateService([FromBody] CreateService createService)
 		{
@@ -71,6 +76,11 @@ namespace Administration.Service.API.Controllers
 			return Created();
 		}
 
+		/// <summary>
+		/// Updates service
+		/// </summary>
+		/// <param name="updateService"></param>
+		/// <returns></returns>
 		[HttpPut()]
 		public async Task<IActionResult> UpdateService([FromBody] UpdateService updateService)
 		{
@@ -80,6 +90,22 @@ namespace Administration.Service.API.Controllers
 			await _serviceRepository.UpdateServiceAsync(updateService);
 
 			return NoContent();
+		}
+
+		/// <summary>
+		/// Deletes service
+		/// </summary>
+		/// <param name="serviceId"></param>
+		/// <returns></returns>
+		[HttpDelete("{serviceId}")]
+		public async Task<IActionResult> DeleteService(Guid serviceId)
+		{
+			if (serviceId == default)
+				return BadRequest("serviceId shouldn't be null");
+
+			await _serviceRepository.DeleteServiceAsync(serviceId);
+
+			return Ok();
 		}
 	}
 }

@@ -125,5 +125,21 @@ namespace Administration.Service.API.Controllers
 
 			return NoContent();
 		}
+
+		/// <summary>
+		/// Deletes worker
+		/// </summary>
+		/// <param name="workerId"></param>
+		/// <returns></returns>
+		[HttpDelete("{workerId}")]
+		public async Task<IActionResult> DeleteService(Guid workerId)
+		{
+			if (workerId == default)
+				return BadRequest("workerId shouldn't be null");
+
+			await _workersRepository.DeleteWorkerAsync(workerId);
+
+			return Ok();
+		}
 	}
 }
