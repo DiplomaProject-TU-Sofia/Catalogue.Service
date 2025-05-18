@@ -84,7 +84,7 @@ namespace Administration.Service.API.Controllers
 		[HttpPut()]
 		public async Task<IActionResult> UpdateService([FromBody] UpdateService updateService)
 		{
-			if (updateService == null || string.IsNullOrWhiteSpace(updateService.Name) || updateService.Duration != default || updateService.Price == default || updateService.ServiceId == default)
+			if (updateService == null || string.IsNullOrWhiteSpace(updateService.Name) || updateService.Duration == default || updateService.Price == default || updateService.ServiceId == default)
 				return BadRequest("Cannot create service with empty name, duration, price or id");
 
 			await _serviceRepository.UpdateServiceAsync(updateService);
