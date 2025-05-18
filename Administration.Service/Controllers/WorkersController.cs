@@ -131,7 +131,7 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerId"></param>
 		/// <returns></returns>
-		[HttpDelete("{workerId}")]
+		[HttpDelete("workers/{workerId}")]
 		public async Task<IActionResult> DeleteService(Guid workerId)
 		{
 			if (workerId == default)
