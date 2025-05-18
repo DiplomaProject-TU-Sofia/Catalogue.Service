@@ -99,7 +99,7 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerService"></param>
 		/// <returns></returns>
-		[HttpDelete("workers-service")]
+		[HttpDelete("worker-service")]
 		public async Task<IActionResult> RemoveWorkerService(RemoveWorkerServiceModel workerService)
 		{
 			if (workerService.ServiceId == default || workerService.WorkerId == default)
@@ -115,7 +115,7 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerService"></param>
 		/// <returns></returns>
-		[HttpDelete("workers-saloon")]
+		[HttpDelete("worker-saloon")]
 		public async Task<IActionResult> RemoveSaloonWorker(RemoveSaloonWorkerModel saloonWorker)
 		{
 			if (saloonWorker.SaloonId == default || saloonWorker.WorkerId == default)
