@@ -76,7 +76,7 @@ namespace Administration.Service.Data.Repositories
 				Description = service.Description,
 				Duration = service.Duration,
 				Price = service.Price,
-				Worker = service.WorkerServices.Select(ws => new Models.Worker.WorkerDto
+				Workers = service.WorkerServices.Select(ws => new Models.Worker.WorkerDto
 				{
 					Id = ws.Worker.Id,
 					FirstName = ws.Worker.FirstName,

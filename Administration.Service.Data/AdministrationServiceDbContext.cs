@@ -17,7 +17,6 @@ namespace Administration.Service.Data
 		public DbSet<User> Users { get; set; }
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<UserRole> UserRoles { get; set; }
-
 		public DbSet<SaloonWorker> SaloonWorkers { get; set; }
 		public DbSet<WorkerService> WorkerServices { get; set; }
 

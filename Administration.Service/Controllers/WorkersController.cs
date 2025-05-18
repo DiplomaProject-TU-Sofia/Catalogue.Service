@@ -68,10 +68,10 @@ namespace Administration.Service.API.Controllers
 		[HttpPost("worker-service")]
 		public async Task<IActionResult> CreateWorkerService(CreateWorkerServiceModel workerService)
 		{
-			if (workerService.ServiceId == default || workerService.UserId == default)
+			if (workerService.ServiceId == default || workerService.WorkerId == default)
 				return BadRequest();
 
-			if (!await _workersRepository.AssignServiceToWorkerAsync(workerService.ServiceId, workerService.UserId))
+			if (!await _workersRepository.AssignServiceToWorkerAsync(workerService.ServiceId, workerService.WorkerId))
 				return BadRequest();
 
 			return NoContent();

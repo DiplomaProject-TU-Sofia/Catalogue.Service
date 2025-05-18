@@ -10,6 +10,6 @@ namespace Administration.Service.Models.Service
 		public decimal Price { get; set; }
 		public TimeSpan Duration { get; set; }
 
-		public IEnumerable<WorkerDto> Worker { get; set; } = new List<WorkerDto>();
+		public IEnumerable<WorkerDto> Workers { get; set; } = new List<WorkerDto>();
 	}
 }

@@ -2,7 +2,7 @@
 {
     public class CreateWorkerServiceModel
     {
-        public Guid UserId { get; set; }
+        public Guid WorkerId { get; set; }
 
         public Guid ServiceId { get; set; }
     }

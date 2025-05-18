@@ -83,11 +83,6 @@ namespace Administration.Service.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_WorkerServices_Saloons_SaloonId",
-                        column: x => x.SaloonId,
-                        principalTable: "Saloons",
-                        principalColumn: "SaloonId");
-                    table.ForeignKey(
                         name: "FK_WorkerServices_Services_ServiceId",
                         column: x => x.ServiceId,
                         principalTable: "Services",
@@ -98,11 +93,6 @@ namespace Administration.Service.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_SaloonWorkers_SaloonId",
                 table: "SaloonWorkers",
-                column: "SaloonId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_WorkerServices_SaloonId",
-                table: "WorkerServices",
                 column: "SaloonId");
 
             migrationBuilder.CreateIndex(
