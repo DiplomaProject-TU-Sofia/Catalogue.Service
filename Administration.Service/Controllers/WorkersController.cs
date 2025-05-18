@@ -113,7 +113,7 @@ namespace Administration.Service.API.Controllers
 		/// <summary>
 		/// Remove worker from saloon
 		/// </summary>
-		/// <param name="workerService"></param>
+		/// <param name="saloonWorker"></param>
 		/// <returns></returns>
 		[HttpDelete("worker-saloon")]
 		public async Task<IActionResult> RemoveSaloonWorker(RemoveSaloonWorkerModel saloonWorker)
