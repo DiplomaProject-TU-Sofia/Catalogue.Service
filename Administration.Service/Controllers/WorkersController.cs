@@ -44,7 +44,7 @@ namespace Administration.Service.API.Controllers
 		/// </summary>
 		/// <param name="workerId"></param>
 		/// <returns></returns>
-		[HttpGet("workers/{serviceId:guid}")]
+		[HttpGet("workers/{workerId:guid}")]
 		public async Task<IActionResult> GetWorkerDetails(Guid workerId)
 		{
 			//Validate workerId
