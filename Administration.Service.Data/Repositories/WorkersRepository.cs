@@ -62,7 +62,12 @@ namespace Administration.Service.Data.Repositories
 
 		public async Task<WorkerDetailsDto> GetWorkerDetails(Guid workerId)
 		{
-			var worker = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == workerId && u.UserRoles.Any(ur => ur.Role.Name == "Worker"));
+			var worker = await _dbContext.Users
+				.Include(u => u.WorkerServices)
+				.ThenInclude(ws => ws.Service)
+				.Include(u => u.SaloonWorkers)
+				.ThenInclude(sw => sw.Saloon)
+				.FirstOrDefaultAsync(u => u.Id == workerId && u.UserRoles.Any(ur => ur.Role.Name == "Worker"));
 
 			if (worker == null)
 				return null;
