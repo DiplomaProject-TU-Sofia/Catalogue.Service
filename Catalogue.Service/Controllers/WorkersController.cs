@@ -31,7 +31,7 @@ namespace Catalogue.Service.API.Controllers
 			//Validate oDataQuery options
 			ValidationSettings.AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.Count;
 			ValidationSettings.AllowedLogicalOperators = AllowedLogicalOperators.Equal | AllowedLogicalOperators.NotEqual | AllowedLogicalOperators.And | AllowedLogicalOperators.Or;
-			ValidationSettings.AllowedFunctions = AllowedFunctions.All;
+			ValidationSettings.AllowedFunctions = AllowedFunctions.All | AllowedFunctions.Any;
 			if (!ValidateODataQuery(queryOptions, out string validationMessage))
 				return BadRequest(validationMessage);
 
