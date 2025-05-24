@@ -1,4 +1,6 @@
-﻿using Catalogue.Service.Data.Repositories;
+﻿using Catalogue.Service.Data.Entities;
+using Catalogue.Service.Data.Repositories;
+using Catalogue.Service.Models.Saloon;
 using Catalogue.Service.Models.Worker;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +26,7 @@ namespace Catalogue.Service.API.Controllers
 		/// <param name="queryOptions"></param>
 		/// <returns></returns>
 		[HttpGet("workers")]
-		public async Task<IActionResult> GetWorkers(ODataQueryOptions<WorkerDto> queryOptions)
+		public async Task<IActionResult> GetWorkers(ODataQueryOptions<User> queryOptions)
 		{
 			//Validate oDataQuery options
 			ValidationSettings.AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.Count;
@@ -35,6 +37,20 @@ namespace Catalogue.Service.API.Controllers
 
 			//Get workers and apply oData
 			var workers = await _workersRepository.GetWorkers(queryOptions);
+
+			var response = workers.Select(w => new WorkerDto
+			{
+				Id = w.Id,
+				FirstName = w.FirstName,
+				LastName = w.LastName,
+				Saloons = w.SaloonWorkers.Select(sw =>
+				new SaloonDto
+				{
+					Id = sw.Saloon.Id,
+					Location = sw.Saloon.Location,
+					Name = sw.Saloon.Name
+				})
+			});
 
 			return Ok(workers);
 		}

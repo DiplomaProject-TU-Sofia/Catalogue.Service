@@ -18,7 +18,7 @@ namespace Catalogue.Service.API.Controllers
 		}
 
 		/// <summary>
-		/// 
+		/// Get services
 		/// </summary>
 		/// <param name="queryOptions"></param>
 		/// <returns></returns>

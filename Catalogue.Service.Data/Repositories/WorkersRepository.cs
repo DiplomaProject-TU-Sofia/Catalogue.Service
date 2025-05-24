@@ -47,17 +47,13 @@ namespace Catalogue.Service.Data.Repositories
 			return true;
 		}
 
-		public async Task<IEnumerable<WorkerDto>> GetWorkers(ODataQueryOptions<WorkerDto> queryOptions)
+		public async Task<IEnumerable<User>> GetWorkers(ODataQueryOptions<User> queryOptions)
 		{
 			return await queryOptions
 				.ApplyTo(_dbContext.Users
-				.Where(u => u.UserRoles.Any(ur => ur.Role.Name == "Worker"))
-				.Select(u => new WorkerDto
-				{
-					Id = u.Id,
-					FirstName = u.FirstName,
-					LastName = u.LastName
-				})).Cast<WorkerDto>().ToListAsync();
+				.Where(u => u.UserRoles.Any(ur => ur.Role.Name == "Worker")))
+				.Cast<User>()
+				.ToListAsync();
 		}
 
 		public async Task<WorkerDetailsDto> GetWorkerDetails(Guid workerId)
