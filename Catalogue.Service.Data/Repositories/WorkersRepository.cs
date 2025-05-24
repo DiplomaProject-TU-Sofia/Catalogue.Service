@@ -51,6 +51,10 @@ namespace Catalogue.Service.Data.Repositories
 		{
 			return await queryOptions
 				.ApplyTo(_dbContext.Users
+				.Include(u => u.SaloonWorkers)
+					.ThenInclude(sw => sw.Saloon)
+				.Include(u => u.WorkerServices)
+					.ThenInclude(ws => ws.Service)
 				.Where(u => u.UserRoles.Any(ur => ur.Role.Name == "Worker")))
 				.Cast<User>()
 				.ToListAsync();

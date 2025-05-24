@@ -52,7 +52,7 @@ namespace Catalogue.Service.API.Controllers
 				})
 			});
 
-			return Ok(workers);
+			return Ok(response);
 		}
 
 		/// <summary>
