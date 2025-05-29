@@ -48,7 +48,8 @@ namespace Catalogue.Service.API.Controllers
 				{
 					Id = sw.Saloon.Id,
 					Location = sw.Saloon.Location,
-					Name = sw.Saloon.Name
+					Name = sw.Saloon.Name,
+					WorkHours = sw.Saloon.WorkHours
 				})
 			});
 

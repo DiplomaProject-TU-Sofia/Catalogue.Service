@@ -81,7 +81,8 @@ namespace Catalogue.Service.Data.Repositories
 				{
 					Id = sw.Saloon.Id,
 					Name = sw.Saloon.Name,
-					Location = sw.Saloon.Location
+					Location = sw.Saloon.Location,
+					WorkHours = sw.Saloon.WorkHours
 				}),
 				Services = worker.WorkerServices.Select(ws => new ServiceDto
 				{

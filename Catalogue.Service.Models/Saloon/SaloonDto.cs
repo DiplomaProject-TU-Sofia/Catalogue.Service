@@ -10,6 +10,8 @@ namespace Catalogue.Service.Models.Saloon
 
         public string Location { get; set; }
 
+		public Dictionary<DayOfWeek, WorkingHourRange> WorkHours { get; set; }
+
 		public IEnumerable<WorkerDto> Workers { get; set; }
     }
 }
