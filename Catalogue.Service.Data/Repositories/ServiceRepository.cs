@@ -57,7 +57,7 @@ namespace Catalogue.Service.Data.Repositories
 		public async Task<IEnumerable<ServiceDto>> GetServicesAsync(ODataQueryOptions<ServiceDto> queryOptions)
 		{
 			return await queryOptions
-				.ApplyTo(_dbContext.Services.Select(s => new ServiceDto { Id = s.Id, Name = s.Name, Description = s.Description}))
+				.ApplyTo(_dbContext.Services.Select(s => new ServiceDto { Id = s.Id, Name = s.Name, Description = s.Description, Price = s.Price}))
 				.Cast<ServiceDto>()
 				.ToListAsync();
 		}
