@@ -3,6 +3,7 @@ using Catalogue.Service.Data.Entities.Enumerations;
 using Catalogue.Service.Models.Service;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Catalogue.Service.Data.Repositories
 {
@@ -23,6 +24,7 @@ namespace Catalogue.Service.Data.Repositories
 				Description = createService.Description,
 				Duration = createService.Duration,
 				Price = createService.Price,
+				ImageName = createService.ImageName,
 			};
 			_dbContext.Services.Add(service);
 			await _dbContext.SaveChangesAsync();
@@ -40,6 +42,7 @@ namespace Catalogue.Service.Data.Repositories
 			existingService.Description = updateDto.Description;
 			existingService.Price = updateDto.Price;
 			existingService.Duration = updateDto.Duration;
+			existingService.ImageName = updateDto.ImageName.IsNullOrEmpty() ? existingService.ImageName : updateDto.ImageName;
 
 			await _dbContext.SaveChangesAsync();
 		}
