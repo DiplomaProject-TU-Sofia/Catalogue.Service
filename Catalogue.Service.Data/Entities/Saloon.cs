@@ -8,6 +8,7 @@ namespace Catalogue.Service.Data.Entities
 		public string Name { get; set; } = null!;
 		public string Location { get; set; } = null!;
 		public Dictionary<DayOfWeek, WorkingHourRange> WorkHours { get; set; }
+		public string? ImageName { get; set; }
 
 		//Navigation properties
 		public ICollection<SaloonWorker> SaloonWorkers { get; set; } = new List<SaloonWorker>();

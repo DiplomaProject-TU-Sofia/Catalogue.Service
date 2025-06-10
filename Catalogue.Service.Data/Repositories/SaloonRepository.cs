@@ -3,6 +3,7 @@ using Catalogue.Service.Models.Saloon;
 using Catalogue.Service.Models.Worker;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Catalogue.Service.Data.Repositories
 {
@@ -22,6 +23,7 @@ namespace Catalogue.Service.Data.Repositories
 				Name = createSaloon.Name,
 				Location = createSaloon.Location,
 				WorkHours = createSaloon.WorkHours,
+				ImageName = createSaloon.ImageName
 			};
 			_dbContext.Saloons.Add(saloon);
 			await _dbContext.SaveChangesAsync();
@@ -40,6 +42,7 @@ namespace Catalogue.Service.Data.Repositories
 			existingSaloon.Name = updateSaloon.Name;
 			existingSaloon.Location = updateSaloon.Location;
 			existingSaloon.WorkHours = updateSaloon.WorkHours;
+			existingSaloon.ImageName = updateSaloon.ImageName.IsNullOrEmpty() ? existingSaloon.ImageName : updateSaloon.ImageName;
 
 			await _dbContext.SaveChangesAsync();
 		}

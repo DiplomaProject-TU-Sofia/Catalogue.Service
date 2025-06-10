@@ -5,6 +5,7 @@
 		public Guid SaloonId { get; set; }
 		public string Name { get; set; } = null!;
 		public string Location { get; set; } = null!;
+		public string? ImageName { get; set; }
 		public Dictionary<DayOfWeek, WorkingHourRange> WorkHours { get; set; }
 	}
 }
