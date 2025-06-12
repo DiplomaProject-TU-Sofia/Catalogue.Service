@@ -1,13 +1,11 @@
-﻿using Catalogue.Service.Data.Entities;
-using Catalogue.Service.Data.Entities.Enumerations;
-using Catalogue.Service.Models.Service;
+﻿using Catalogue.Service.Models.Service;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Catalogue.Service.Data.Repositories
 {
-    public class ServiceRepository
+	public class ServiceRepository
 	{
 		private readonly AdministrationServiceDbContext _dbContext;
 		public ServiceRepository(AdministrationServiceDbContext dbContext)

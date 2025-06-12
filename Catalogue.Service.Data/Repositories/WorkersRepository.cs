@@ -4,11 +4,6 @@ using Catalogue.Service.Models.Service;
 using Catalogue.Service.Models.Worker;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Catalogue.Service.Data.Repositories
 {

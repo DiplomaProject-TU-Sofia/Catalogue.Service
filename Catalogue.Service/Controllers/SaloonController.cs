@@ -40,27 +40,6 @@ namespace Catalogue.Service.API.Controllers
 			return Ok(saloonDetails);
 		}
 
-		///// <summary>
-		///// Get saloons using oDataQuery
-		///// </summary>
-		///// <param name="queryOptions"></param>
-		///// <returns></returns>
-		//[HttpGet()]
-		//public async Task<IActionResult> GetSaloons(ODataQueryOptions<SaloonDto> queryOptions)
-		//{
-		//	//Validate oDataQuery options
-		//	ValidationSettings.AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.Count;
-		//	ValidationSettings.AllowedLogicalOperators = AllowedLogicalOperators.Equal | AllowedLogicalOperators.NotEqual | AllowedLogicalOperators.And | AllowedLogicalOperators.Or;
-		//	ValidationSettings.AllowedFunctions = AllowedFunctions.All;
-		//	if (!ValidateODataQuery(queryOptions, out string validationMessage))
-		//		return BadRequest(validationMessage);
-
-		//	//Get saloons and apply oData
-		//	var saloons = await _saloonRepository.GetSaloonsAsync(queryOptions);
-
-		//	return Ok(saloons);
-		//}
-
 		/// <summary>
 		/// Get saloons using oDataQuery
 		/// </summary>
