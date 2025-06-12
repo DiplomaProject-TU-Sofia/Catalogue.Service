@@ -124,5 +124,15 @@ namespace Catalogue.Service.Data.Repositories
 			_dbContext.Users.Remove(worker);
 			await _dbContext.SaveChangesAsync();
 		}
+
+		public async Task UpdateWorkerImage(Guid workerId, string imageName)
+		{
+			var worker = await _dbContext.Users.Include(u => u.UserRoles).ThenInclude(ur => ur.Role).FirstOrDefaultAsync(u => u.Id == workerId && u.UserRoles.Any(ur => ur.Role.Name == "Worker"));
+			if (worker == null)
+				return;
+
+			worker.ImageName = imageName;
+			await _dbContext.SaveChangesAsync();
+		}
 	}
 }

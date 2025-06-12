@@ -5,6 +5,7 @@
 		public Guid Id { get; set; }
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
+		public string ImageName { get; set; }
 		public ICollection<UserRole> UserRoles { get; set; }
 
 		public ICollection<SaloonWorker> SaloonWorkers { get; set; } = new List<SaloonWorker>();

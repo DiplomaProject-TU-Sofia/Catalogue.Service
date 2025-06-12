@@ -5,6 +5,7 @@ using Catalogue.Service.Models.Worker;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Catalogue.Service.API.Controllers
 {
@@ -155,6 +156,23 @@ namespace Catalogue.Service.API.Controllers
 				return BadRequest("workerId shouldn't be null");
 
 			await _workersRepository.DeleteWorkerAsync(workerId);
+
+			return Ok();
+		}
+
+		/// <summary>
+		/// Update worker image
+		/// </summary>
+		/// <param name="workerId"></param>
+		/// <param name="imageName"></param>
+		/// <returns></returns>
+		[HttpPut("workers/{workerId}/{imageName}")]
+		public async Task<IActionResult> UpdateWorkerImage(Guid workerId, string imageName)
+		{
+			if (workerId == default || imageName.IsNullOrEmpty())
+				return BadRequest("workerId and imageName shouldn't be null");
+
+			await _workersRepository.UpdateWorkerImage(workerId, imageName);
 
 			return Ok();
 		}
