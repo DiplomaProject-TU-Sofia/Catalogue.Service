@@ -44,6 +44,7 @@ namespace Catalogue.Service.API.Controllers
 				Id = w.Id,
 				FirstName = w.FirstName,
 				LastName = w.LastName,
+				ImageName = w.ImageName,
 				Saloons = w.SaloonWorkers.Select(sw =>
 				new SaloonDto
 				{

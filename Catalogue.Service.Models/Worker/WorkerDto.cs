@@ -10,6 +10,8 @@ namespace Catalogue.Service.Models.Worker
 
 		public string? LastName { get; set; }
 
+		public string? ImageName { get; set; }
+
 		public List<DayOfWeek> WorkingDays { get; set; }
 
 		public IEnumerable<SaloonDto> Saloons { get; set; } 
