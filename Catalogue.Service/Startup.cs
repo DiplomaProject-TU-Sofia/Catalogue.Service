@@ -52,6 +52,7 @@ public class Startup
 		services.AddTransient<SaloonRepository>();
 		services.AddTransient<ServiceRepository>();
 		services.AddTransient<WorkersRepository>();
+		services.AddTransient<StatisticsRepository>();
 		
 		services.AddControllers()
 			.AddJsonOptions(options =>
