@@ -15,7 +15,7 @@ namespace Catalogue.Service.API.Controllers
 		[HttpGet()]
 		public async Task<IActionResult> GetStatistics()
 		{
-			return Ok(statisticsRepository.GetStatistics());
+			return Ok(await statisticsRepository.GetStatistics());
 		}
 	}
 }

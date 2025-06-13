@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Catalogue.Service.Data.Migrations
 {
-    [DbContext(typeof(AdministrationServiceDbContext))]
+    [DbContext(typeof(CatalogueServiceDbContext))]
     [Migration("20250422064237_rename_collumns")]
     partial class rename_collumns
     {

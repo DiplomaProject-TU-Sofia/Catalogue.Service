@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Catalogue.Service.Data.Repositories
 {
-	public class StatisticsRepository(AdministrationServiceDbContext _dbContext)
+	public class StatisticsRepository(CatalogueServiceDbContext _dbContext)
     {
 		public async Task<StatisticsModel> GetStatistics()
 		{

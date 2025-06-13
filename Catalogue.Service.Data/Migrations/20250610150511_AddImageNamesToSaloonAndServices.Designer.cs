@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Catalogue.Service.Data.Migrations
 {
-    [DbContext(typeof(AdministrationServiceDbContext))]
+    [DbContext(typeof(CatalogueServiceDbContext))]
     [Migration("20250610150511_AddImageNamesToSaloonAndServices")]
     partial class AddImageNamesToSaloonAndServices
     {

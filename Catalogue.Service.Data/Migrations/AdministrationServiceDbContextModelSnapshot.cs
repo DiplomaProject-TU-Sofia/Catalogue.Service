@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Catalogue.Service.Data.Migrations
 {
-    [DbContext(typeof(AdministrationServiceDbContext))]
+    [DbContext(typeof(CatalogueServiceDbContext))]
     partial class AdministrationServiceDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

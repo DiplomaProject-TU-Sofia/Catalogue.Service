@@ -9,8 +9,8 @@ namespace Catalogue.Service.Data.Repositories
 {
 	public class WorkersRepository
 	{
-		private readonly AdministrationServiceDbContext _dbContext;
-		public WorkersRepository(AdministrationServiceDbContext dbContext)
+		private readonly CatalogueServiceDbContext _dbContext;
+		public WorkersRepository(CatalogueServiceDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}

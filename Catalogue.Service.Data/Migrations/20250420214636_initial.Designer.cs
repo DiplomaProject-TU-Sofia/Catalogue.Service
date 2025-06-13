@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Catalogue.Service.Data.Migrations
 {
-    [DbContext(typeof(AdministrationServiceDbContext))]
+    [DbContext(typeof(CatalogueServiceDbContext))]
     [Migration("20250420214636_initial")]
     partial class initial
     {

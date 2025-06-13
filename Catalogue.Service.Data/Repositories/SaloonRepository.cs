@@ -9,8 +9,8 @@ namespace Catalogue.Service.Data.Repositories
 {
 	public class SaloonRepository
 	{
-		private readonly AdministrationServiceDbContext _dbContext;
-		public SaloonRepository(AdministrationServiceDbContext dbContext)
+		private readonly CatalogueServiceDbContext _dbContext;
+		public SaloonRepository(CatalogueServiceDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}

@@ -20,7 +20,7 @@ public class Startup
 	public void ConfigureServices(IServiceCollection services)
 	{
 
-		services.AddDbContext<AdministrationServiceDbContext>(options =>
+		services.AddDbContext<CatalogueServiceDbContext>(options =>
 			options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
 
 		// Enable JWT authentication

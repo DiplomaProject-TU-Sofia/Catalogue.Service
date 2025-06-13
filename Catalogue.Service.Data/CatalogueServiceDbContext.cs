@@ -7,9 +7,9 @@ using System.Text.Json;
 
 namespace Catalogue.Service.Data
 {
-    public class AdministrationServiceDbContext : DbContext
+    public class CatalogueServiceDbContext : DbContext
 	{
-		public AdministrationServiceDbContext(DbContextOptions<AdministrationServiceDbContext> options) : base(options)
+		public CatalogueServiceDbContext(DbContextOptions<CatalogueServiceDbContext> options) : base(options)
 		{
 		}
 		public DbSet<Saloon> Saloons { get; set; }

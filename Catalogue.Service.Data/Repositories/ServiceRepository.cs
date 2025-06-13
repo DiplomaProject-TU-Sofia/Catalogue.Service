@@ -7,8 +7,8 @@ namespace Catalogue.Service.Data.Repositories
 {
 	public class ServiceRepository
 	{
-		private readonly AdministrationServiceDbContext _dbContext;
-		public ServiceRepository(AdministrationServiceDbContext dbContext)
+		private readonly CatalogueServiceDbContext _dbContext;
+		public ServiceRepository(CatalogueServiceDbContext dbContext)
 		{
 			_dbContext = dbContext;
 		}
