@@ -5,7 +5,7 @@ namespace Catalogue.Service.API.Controllers
 {
 	[Route("api/statistics")]
 	[ApiController]
-	public class StatisticsController(ILogger log, StatisticsRepository statisticsRepository) : BaseController(log)
+	public class StatisticsController(ILogger<StatisticsController> log, StatisticsRepository statisticsRepository) : BaseController(log)
 	{
 
 		/// <summary>
