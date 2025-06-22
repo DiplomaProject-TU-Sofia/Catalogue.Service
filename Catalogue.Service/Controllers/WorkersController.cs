@@ -102,6 +102,7 @@ namespace Catalogue.Service.API.Controllers
 		/// <param name="saloonWorker"></param>
 		/// <returns></returns>
 		[HttpPost("worker-saloon")]
+		[Authorize(Roles = "User")]
 		public async Task<IActionResult> CreateSaloonWorker([FromBody] CreateSaloonWorkerModel saloonWorker)
 		{
 			if (saloonWorker.SaloonId == default || saloonWorker.WorkerId == default)
@@ -112,13 +113,14 @@ namespace Catalogue.Service.API.Controllers
 
 			return NoContent();
 		}
-		
+
 		/// <summary>
 		/// Remove service from worker
 		/// </summary>
 		/// <param name="workerService"></param>
 		/// <returns></returns>
 		[HttpDelete("worker-service")]
+		[Authorize(Roles = "User")]
 		public async Task<IActionResult> RemoveWorkerService(RemoveWorkerServiceModel workerService)
 		{
 			if (workerService.ServiceId == default || workerService.WorkerId == default)
