@@ -5,7 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY ["Catalogue.Service/Catalogue.Service.csproj", "Catalogue.Service/"]
+COPY ["Catalogue.Service/Catalogue.Service.API.csproj", "Catalogue.Service/"]
 COPY ["Catalogue.Service.Data/Catalogue.Service.Data.csproj", "Catalogue.Service.Data/"]
 COPY ["Catalogue.Service.Models/Catalogue.Service.Models.csproj", "Catalogue.Service.Models/"]
 
