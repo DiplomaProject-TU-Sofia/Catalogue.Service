@@ -9,7 +9,7 @@ COPY ["Catalogue.Service/Catalogue.Service.API.csproj", "Catalogue.Service/"]
 COPY ["Catalogue.Service.Data/Catalogue.Service.Data.csproj", "Catalogue.Service.Data/"]
 COPY ["Catalogue.Service.Models/Catalogue.Service.Models.csproj", "Catalogue.Service.Models/"]
 
-RUN dotnet restore "Catalogue.Service/Catalogue.Service.csproj"
+RUN dotnet restore "Catalogue.Service/Catalogue.Service.API.csproj"
 
 COPY . .
 
